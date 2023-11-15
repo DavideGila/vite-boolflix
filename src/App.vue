@@ -8,20 +8,20 @@
         <h2>Movies</h2>
         <div class="col-3" v-for="movie in store.movieList">
           <MainComponent 
-            :movieImg="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" 
-            :movieTitle="movie.title"
-            :movieOriginalTitle="movie.original_title" 
-            :movieLanguage="movie.original_language"
-            :movieVote="movie.vote_average" />
+            :img="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" 
+            :title="movie.title"
+            :priginalTitle="movie.original_title" 
+            :language="movie.original_language"
+            :vote="movie.vote_average" />
         </div>
         <h2>Series</h2>
         <div class="col-3" v-for="serie in store.seriesList">
           <MainComponent
-            :seriesImg="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" 
-            :seriesTitle="serie.name"
-            :seriesOriginalTitle="serie.original_name" 
-            :seriesLanguage="serie.original_language"
-            :seriesVote="serie.vote_average" />
+            :img="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" 
+            :title="serie.name"
+            :originalTitle="serie.original_name" 
+            :language="serie.original_language"
+            :vote="serie.vote_average" />
         </div>
 
       </div>
