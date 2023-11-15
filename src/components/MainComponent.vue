@@ -4,7 +4,7 @@
         <div class="text-center bg-cards h">
             <h5 class="title">{{ title }}</h5>
             <h6 class="title">{{ originalTitle }}</h6>
-            <p>{{ language }}</p>
+            <img :src="flagSwitch()" :alt="language" class="flags-w">
             <p>{{ vote }}</p>
         </div>
     </div>
@@ -19,15 +19,31 @@ export default {
         title: String,
         originalTitle: String,
         language: String,
-        vote: Number
+        vote: Number,
     },
     data() {
         return {
             store
         }
     },
+    methods: {
+        flagSwitch(){
+            if(this.language === 'en'){
+                return this.store.flagsList.en
+            } else if(this.language === 'fr'){
+                return this.store.flagsList.fr
+            } else if(this.language === 'ja'){
+                return this.store.flagsList.ja
+            }
+        }
+    },
+    created(){
+    }
 }
 </script>
 
 <style lang="scss">
+.flags-w{
+    width: 50px;
+}
 </style>
