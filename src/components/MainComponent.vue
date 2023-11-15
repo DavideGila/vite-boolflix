@@ -1,22 +1,11 @@
 <template>
     <div>
-        <img :src="movieImg" :alt="movieTitle" class="w-100"/>
+        <img :src="img" :alt="title" class="w-100"/>
         <div class="text-center bg-cards h">
-            <h5 class="title">{{ movieTitle }}</h5>
-            <h6 class="title">{{ movieOriginalTitle }}</h6>
-            <p>{{ movieLanguage }}</p>
-            <p>{{ movieVote }}</p>
-        </div>
-    </div>
-    <div>
-        <div>
-            <img :src="seriesImg" :alt="seriesTitle" class="w-100"/>
-            <div class="text-center bg-cards h">
-                <h5 class="title">{{ seriesTitle }}</h5>
-                <h6 class="title">{{ seriesOriginalTitle }}</h6>
-                <p>{{ seriesLanguage }}</p>
-                <p>{{ seriesVote }}</p>
-            </div>
+            <h5 class="title">{{ title }}</h5>
+            <h6 class="title">{{ originalTitle }}</h6>
+            <p>{{ language }}</p>
+            <p>{{ vote }}</p>
         </div>
     </div>
 </template>
@@ -26,16 +15,11 @@ import { store } from '../data/store.js'
 export default {
     name: 'MainComponent',
     props: {
-        movieImg: String,
-        movieTitle: String,
-        movieOriginalTitle: String,
-        movieLanguage: String,
-        movieVote: Number,
-        seriesImg: String,
-        seriesTitle: String,
-        seriesOriginalTitle: String,
-        seriesLanguage: String,
-        seriesVote: Number
+        img: String,
+        title: String,
+        originalTitle: String,
+        language: String,
+        vote: Number
     },
     data() {
         return {
