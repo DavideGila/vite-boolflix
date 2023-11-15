@@ -6,7 +6,7 @@
                 <button class="input-group-text justify-content-center bg-white">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-            <input type="text" class="form-control" placeholder="Cerca" v-model.trim="filter" />
+            <input type="text" class="form-control" placeholder="Cerca" />
         </div>
     </div>
     </div>
