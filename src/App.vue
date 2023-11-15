@@ -1,19 +1,21 @@
 <template>
-  <div>
-
-  </div>
+  <MainComponent />
 </template>
 
 <script>
 import axios from 'axios'
 import {store} from './data/store.js'
+import MainComponent from './components/MainComponent.vue'
 
   export default {
     name: 'App',
     data() {
       return {
-        store
+        store        
       }
+    },
+    components: {
+      MainComponent
     },
     methods: {
       getMoviesAndSeries(){
