@@ -10,9 +10,10 @@
           <MainComponent 
             :img="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" 
             :title="movie.title"
-            :priginalTitle="movie.original_title" 
+            :originalTitle="movie.original_title" 
             :language="movie.original_language"
-            :vote="movie.vote_average" />
+            :vote="movie.vote_average"            
+            />
         </div>
         <h2>Series</h2>
         <div class="col-3" v-for="serie in store.seriesList">
