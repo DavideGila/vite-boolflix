@@ -7,11 +7,10 @@ export const store = reactive({
     },
     params: {
         api_key: 'a9f12e55fa53586e59311102e6a5b433',
-        query: 'a'
+        query: 'star wars'
     },
     error: '',
     loading: true,
     movieList:[],
     seriesList:[]
 })
-
