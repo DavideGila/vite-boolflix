@@ -5,7 +5,7 @@
             <h5 class="title">{{ title }}</h5>
             <h6 class="title">{{ originalTitle }}</h6>
             <img :src="flagSwitch()" :alt="language" class="flags-w">
-            <p>{{ vote }}</p>
+            <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
         </div>
     </div>
 </template>
