@@ -1,46 +1,70 @@
 <template>
-  <header><HeaderComponent /></header>
-  <main><MainComponent /></main>
-  
+  <header>
+    <HeaderComponent />
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <h2>Movies</h2>
+        <div class="col-3" v-for="movie in store.movieList">
+          <MainComponent 
+            :movieImg="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" 
+            :movieTitle="movie.title"
+            :movieOriginalTitle="movie.original_title" 
+            :movieLanguage="movie.original_language"
+            :movieVote="movie.vote_average" />
+        </div>
+        <h2>Series</h2>
+        <div class="col-3" v-for="serie in store.seriesList">
+          <MainComponent
+            :seriesImg="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" 
+            :seriesTitle="serie.name"
+            :seriesOriginalTitle="serie.original_name" 
+            :seriesLanguage="serie.original_language"
+            :seriesVote="serie.vote_average" />
+        </div>
+
+      </div>
+    </div>
+
+  </main>
 </template>
 
 <script>
 import axios from 'axios'
-import {store} from './data/store.js'
+import { store } from './data/store.js'
 import HeaderComponent from './components/HeaderComponent.vue'
 import MainComponent from './components/MainComponent.vue'
 
-  export default {
-    name: 'App',
-    data() {
-      return {
-        store        
-      }
-    },
-    components: {
-      HeaderComponent,
-      MainComponent
-    },
-    methods: {
-      getMoviesAndSeries(){
-        const movieUrl = store.apiUrl+store.endPoint.movie;
-        axios.get(movieUrl, {params: store.params}).then((response) => {
-          console.log(response.data.results);
-          store.movieList = response.data.results;
-        })
-        const seriesUrl = store.apiUrl+store.endPoint.series;
-        axios.get(seriesUrl, {params: store.params}).then((response) => {
-          console.log(response.data.results);
-          store.seriesList = response.data.results;
-        })
-      }
-    },
-    created(){
-      this.getMoviesAndSeries()
+export default {
+  name: 'App',
+  data() {
+    return {
+      store
     }
+  },
+  components: {
+    HeaderComponent,
+    MainComponent
+  },
+  methods: {
+    getMoviesAndSeries() {
+      const movieUrl = store.apiUrl + store.endPoint.movie;
+      axios.get(movieUrl, { params: store.params }).then((response) => {
+        console.log(response.data.results);
+        store.movieList = response.data.results;
+      })
+      const seriesUrl = store.apiUrl + store.endPoint.series;
+      axios.get(seriesUrl, { params: store.params }).then((response) => {
+        console.log(response.data.results);
+        store.seriesList = response.data.results;
+      })
+    }
+  },
+  created() {
+    this.getMoviesAndSeries()
   }
+}
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
