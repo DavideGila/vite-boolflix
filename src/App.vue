@@ -1,10 +1,13 @@
 <template>
-  <MainComponent />
+  <header><HeaderComponent /></header>
+  <main><MainComponent /></main>
+  
 </template>
 
 <script>
 import axios from 'axios'
 import {store} from './data/store.js'
+import HeaderComponent from './components/HeaderComponent.vue'
 import MainComponent from './components/MainComponent.vue'
 
   export default {
@@ -15,6 +18,7 @@ import MainComponent from './components/MainComponent.vue'
       }
     },
     components: {
+      HeaderComponent,
       MainComponent
     },
     methods: {
