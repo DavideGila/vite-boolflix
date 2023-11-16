@@ -2,7 +2,7 @@
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img :src="img" :alt="title" class="w-100" style="height: 459px;" />
+                <img :src="imgAbsent()" :alt="title" class="w-100" style="height: 459px;" />
             </div>
             <div class="flip-card-back overflow-y-auto">
                 <h5 class="title">{{ title }}</h5>
@@ -40,6 +40,13 @@ export default {
                 return this.store.flagsList.fr
             } else if (this.language === 'ja') {
                 return this.store.flagsList.ja
+            }
+        },
+        imgAbsent() {
+            if (this.img) {
+                return store.imgLink + this.img;
+            } else {
+                return '/images/nope-not-here.jpg';
             }
         }
     },
