@@ -8,7 +8,7 @@
         <h2>Movies</h2>
         <div class="col-3 pb-3" v-for="movie in store.movieList">
           <MainComponent 
-            :img="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" 
+            :img="movie.poster_path" 
             :title="movie.title"
             :originalTitle="movie.original_title" 
             :language="movie.original_language"
@@ -19,7 +19,7 @@
         <h2>Series</h2>
         <div class="col-3 pb-3" v-for="serie in store.seriesList">
           <MainComponent
-            :img="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" 
+            :img="serie.poster_path" 
             :title="serie.name"
             :originalTitle="serie.original_name" 
             :language="serie.original_language"
@@ -44,7 +44,7 @@ export default {
   name: 'App',
   data() {
     return {
-      store
+      store,
     }
   },
   components: {
