@@ -18,5 +18,6 @@ export const store = reactive({
             en: '/images/Flag_of_the_United_Kingdom.png',
             fr: '/images/Flag_of_France.jpg',
             ja: '/images/Flag_of_Japan.jpg'
-        }
+        },
+    imgLink: 'https://image.tmdb.org/t/p/w342/'
 })
