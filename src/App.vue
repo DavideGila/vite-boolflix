@@ -6,23 +6,26 @@
     <div class="container">
       <div class="row">
         <h2>Movies</h2>
-        <div class="col-3" v-for="movie in store.movieList">
+        <div class="col-3 pb-3" v-for="movie in store.movieList">
           <MainComponent 
             :img="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" 
             :title="movie.title"
             :originalTitle="movie.original_title" 
             :language="movie.original_language"
-            :vote="movie.vote_average"            
+            :vote="movie.vote_average"
+            :plot="movie.overview"            
             />
         </div>
         <h2>Series</h2>
-        <div class="col-3" v-for="serie in store.seriesList">
+        <div class="col-3 pb-3" v-for="serie in store.seriesList">
           <MainComponent
             :img="'https://image.tmdb.org/t/p/w342/' + serie.poster_path" 
             :title="serie.name"
             :originalTitle="serie.original_name" 
             :language="serie.original_language"
-            :vote="serie.vote_average" />
+            :vote="serie.vote_average" 
+            :plot="serie.overview"
+            />
         </div>
 
       </div>
