@@ -9,7 +9,7 @@
         <MainComponent v-for="movie in store.movieList" :img="movie.poster_path" :title="movie.title"
           :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"
           :plot="movie.overview" :id="movie.id" :backdrop="store.imgLink+movie.backdrop_path"
-          @click="getActors(movie.id)"/>
+          @click="getActors(movie.id), getGenres(movie.id)"/>
         <h2>Series</h2>
         <MainComponent v-for="serie in store.seriesList" :img="serie.poster_path" :title="serie.name"
           :originalTitle="serie.original_name" :language="serie.original_language" :vote="serie.vote_average"
@@ -57,6 +57,16 @@ export default {
             store.actorsMovieList.push(response.data.cast[i].name)
           }
         }
+      })
+    },
+    getGenres(genreId){
+      store.genreList = []
+      const genreUrl = store.endPoint.actorsMovie + genreId;
+      axios.get(store.apiUrl + genreUrl, { params: store.paramsActor }).then((response) =>{
+        response.data.genres.forEach(genre => {
+          store.genreList.push(genre.name)
+          return store.genreList
+        });
       })
     }
   },
