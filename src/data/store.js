@@ -4,7 +4,7 @@ export const store = reactive({
     endPoint: {
         movie: 'search/movie',
         series: 'search/tv',
-        actorsMovie: 'movie/1895/credits'
+        actorsMovie: 'movie/'
     },
     params: {
         api_key: 'a9f12e55fa53586e59311102e6a5b433',
