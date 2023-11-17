@@ -24,5 +24,5 @@ export const store = reactive({
             fr: '/images/Flag_of_France.jpg',
             ja: '/images/Flag_of_Japan.jpg'
         },
-    imgLink: 'https://image.tmdb.org/t/p/w342/',
+    imgLink: 'https://image.tmdb.org/t/p/original/',
 })
