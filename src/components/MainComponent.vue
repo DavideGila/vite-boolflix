@@ -10,6 +10,7 @@
                 <img :src="flagSwitch()" :alt="language" class="flags-w">
                 <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                 <p>{{ plot }}</p>
+                <span v-for="actor in store.actorsMovieList">{{ actor }}</span>
             </div>
         </div>
     </div>
@@ -25,7 +26,7 @@ export default {
         originalTitle: String,
         language: String,
         vote: Number,
-        plot: String
+        plot: String,
     },
     data() {
         return {
@@ -48,7 +49,7 @@ export default {
             } else {
                 return '/images/nope-not-here.jpg';
             }
-        }
+        },
     },
     created() {
     }
