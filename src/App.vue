@@ -7,25 +7,15 @@
       <div class="row">
         <h2>Movies</h2>
         <div class="col-3 pb-3" v-for="movie in store.movieList">
-          <MainComponent 
-            :img="movie.poster_path" 
-            :title="movie.title"
-            :originalTitle="movie.original_title" 
-            :language="movie.original_language"
-            :vote="movie.vote_average"
-            :plot="movie.overview"            
-            />
+          <MainComponent :img="movie.poster_path" :title="movie.title" :originalTitle="movie.original_title"
+            :language="movie.original_language" :vote="movie.vote_average" :plot="movie.overview" :id="movie.id" @mouseenter="getActors(movie.id)"
+            @mouseleave="store.actorsMovieList = []"
+            />          
         </div>
         <h2>Series</h2>
         <div class="col-3 pb-3" v-for="serie in store.seriesList">
-          <MainComponent
-            :img="serie.poster_path" 
-            :title="serie.name"
-            :originalTitle="serie.original_name" 
-            :language="serie.original_language"
-            :vote="serie.vote_average" 
-            :plot="serie.overview"
-            />
+          <MainComponent :img="serie.poster_path" :title="serie.name" :originalTitle="serie.original_name"
+            :language="serie.original_language" :vote="serie.vote_average" :plot="serie.overview" :id="serie.id" />
         </div>
 
       </div>
@@ -62,6 +52,18 @@ export default {
       axios.get(seriesUrl, { params: store.params }).then((response) => {
         console.log(response.data.results);
         store.seriesList = response.data.results;
+      })
+    },
+    getActors(actorId) {
+      store.actorsMovieList = [];
+      const movieActUrl = store.endPoint.actorsMovie + actorId + '/credits';
+      axios.get(store.apiUrl + movieActUrl, { params: store.paramsActor }).then((response) => {
+        for (let i = 0; i < 5; i++) {
+          if (response.data.cast[i]) {
+            store.actorsMovieList.push(response.data.cast[i].name)
+          }
+        }
+        console.log(store.actorsMovieList);
       })
     }
   },
