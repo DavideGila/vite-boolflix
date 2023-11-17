@@ -5,8 +5,8 @@
                 <div class="flip-card-front">
                     <img :src="imgAbsent()" :alt="title" class="w-100" style="height: 459px;" />
                 </div>
-                <div class="flip-card-back overflow-y-auto d-flex justify-content-center align-items-center flex-column">
-                    <div>
+                <div class="flip-card-back d-flex justify-content-center align-items-center flex-column">
+                    <div class="overflow-y-auto">
                         <h5 class="title">{{ title }}</h5>
                         <h6 class="title">{{ originalTitle }}</h6>
                         <img :src="flagSwitch()" :alt="language" class="flags-w">
@@ -18,13 +18,14 @@
         </div>
 
         <div v-if="appear" @click="closeInfo()" class="info d-flex justify-content-center align-items-center">
-            <div class="w-50">
+            <div class="w-50 overflow-y-auto">
                 <img :src="backdrop" :alt="originalTitle" class="w-100">
                 <h2 class="title">{{ title }}</h2>
                 <h4 class="title">{{ originalTitle }} </h4>
                 <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                 <p>{{ plot }}</p>
                 <p v-for="actor in store.actorsMovieList">{{ actor }}</p>
+                <p v-for="genre in store.genreList">{{ genre }}</p>
             </div>
         </div>
     </div>
@@ -69,14 +70,12 @@ export default {
         moreInfo() {
             if (!this.appear) {
                 this.appear = true;
-                console.log(this.appear);
                 return
             }
         },
         closeInfo(){
             if (this.appear) {
                 this.appear = false;
-                console.log(this.appear);
                 return
             }
         }
