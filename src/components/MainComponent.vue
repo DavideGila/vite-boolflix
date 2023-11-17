@@ -1,16 +1,30 @@
 <template>
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <img :src="imgAbsent()" :alt="title" class="w-100" style="height: 459px;" />
+    <div class="col-3">
+        <div class="flip-card pb-3">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img :src="imgAbsent()" :alt="title" class="w-100" style="height: 459px;" />
+                </div>
+                <div class="flip-card-back overflow-y-auto d-flex justify-content-center align-items-center flex-column">
+                    <div>
+                        <h5 class="title">{{ title }}</h5>
+                        <h6 class="title">{{ originalTitle }}</h6>
+                        <img :src="flagSwitch()" :alt="language" class="flags-w">
+                        <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                        <button class="btn" type="button" @click="moreInfo()">More Info</button>
+                    </div>
+                </div>
             </div>
-            <div class="flip-card-back overflow-y-auto">
-                <h5 class="title">{{ title }}</h5>
-                <h6 class="title">{{ originalTitle }}</h6>
-                <img :src="flagSwitch()" :alt="language" class="flags-w">
+        </div>
+
+        <div v-if="appear" @click="closeInfo()" class="info d-flex justify-content-center align-items-center">
+            <div class="w-50">
+                <img :src="backdrop" :alt="originalTitle" class="w-100">
+                <h2 class="title">{{ title }}</h2>
+                <h4 class="title">{{ originalTitle }} </h4>
                 <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
                 <p>{{ plot }}</p>
-                <span v-for="actor in store.actorsMovieList">{{ actor }}</span>
+                <p v-for="actor in store.actorsMovieList">{{ actor }}</p>
             </div>
         </div>
     </div>
@@ -27,10 +41,12 @@ export default {
         language: String,
         vote: Number,
         plot: String,
+        backdrop: String
     },
     data() {
         return {
-            store
+            store,
+            appear: false
         }
     },
     methods: {
@@ -50,6 +66,20 @@ export default {
                 return '/images/nope-not-here.jpg';
             }
         },
+        moreInfo() {
+            if (!this.appear) {
+                this.appear = true;
+                console.log(this.appear);
+                return
+            }
+        },
+        closeInfo(){
+            if (this.appear) {
+                this.appear = false;
+                console.log(this.appear);
+                return
+            }
+        }
     },
     created() {
     }
@@ -98,5 +128,18 @@ export default {
     background-color: grey;
     color: white;
     transform: rotateY(180deg);
+}
+
+.info {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.3);
+    >div{
+        background-color: grey;
+    }
 }
 </style>
