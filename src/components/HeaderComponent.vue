@@ -1,9 +1,9 @@
 <template>
-    <div class="d-flex justify-content-between align-items-center bg-dark">
+    <div class="d-flex justify-content-between align-items-center bg-dark fixed">
         <h1 class="text-danger">Boolflix</h1>
         <div class="search-bar">
-            <div class="input-group input-group-sm mb-3">
-                <button class="input-group-text justify-content-center bg-white" @click="filterName">
+            <div class="input-group input-group-sm">
+                <button class="input-group-text justify-content-center bg-danger" @click="filterName">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
                 <input type="text" class="form-control" placeholder="Cerca" v-model.trim="search" />
@@ -44,4 +44,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.fixed{
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 1000; 
+    width: 100%; 
+    height: 50px;
+}
+</style>
