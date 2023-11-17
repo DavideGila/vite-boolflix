@@ -18,6 +18,7 @@ export const store = reactive({
     movieList:[],
     seriesList:[],
     actorsMovieList:[],
+    genreList:[],
     flagsList:
         {
             en: '/images/Flag_of_the_United_Kingdom.png',
