@@ -10,22 +10,25 @@
                         <h5 class="title">{{ title }}</h5>
                         <h6 class="title">{{ originalTitle }}</h6>
                         <img :src="flagSwitch()" :alt="language" class="flags-w">
-                        <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                        <p><i class="fa-solid fa-star text-warning" v-for="n in Math.round(vote / 2)"></i></p>
                         <button class="btn" type="button" @click="moreInfo()">More Info</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div v-if="appear" @click="closeInfo()" class="info d-flex justify-content-center align-items-center">
+        <div v-if="appear" @click="closeInfo()" class="info d-flex justify-content-center align-items-center text-white">
             <div class="w-50 overflow-y-auto">
                 <img :src="backdrop" :alt="originalTitle" class="w-100">
                 <h2 class="title">{{ title }}</h2>
                 <h4 class="title">{{ originalTitle }} </h4>
-                <p><i class="fa-solid fa-star" v-for="n in Math.round(vote / 2)"></i></p>
+                <p><i class="fa-solid fa-star text-warning" v-for="n in Math.round(vote / 2)"></i></p>
+                <span>Main Cast:</span>
+                <span v-for="actor in store.actorsMovieList" class="px-2">{{ actor }}</span> <br>
+                <span>Genre:</span>
+                <span v-for="genre in store.genreList" class="px-2">{{ genre }}</span>
+                <div class="pt-3">Plot:</div>
                 <p>{{ plot }}</p>
-                <p v-for="actor in store.actorsMovieList">{{ actor }}</p>
-                <p v-for="genre in store.genreList">{{ genre }}</p>
             </div>
         </div>
     </div>
@@ -138,7 +141,7 @@ export default {
     z-index: 2000;
     background-color: rgba(0, 0, 0, 0.3);
     >div{
-        background-color: grey;
+        background-color: black;
     }
 }
 </style>
