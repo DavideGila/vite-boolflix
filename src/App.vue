@@ -3,14 +3,14 @@
     <HeaderComponent />
   </header>
   <main class="mt-5">
-    <div class="container">
-      <h2>Movies</h2>
+    <div class="container bg-dark">
+      <h2 class="text-danger fs-1">Movies</h2>
       <div class="row">
         <MainComponent v-for="movie in store.movieList" :img="movie.poster_path" :title="movie.title"
           :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"
           :plot="movie.overview" :id="movie.id" :backdrop="store.imgLink+movie.backdrop_path"
           @click="getActors(movie.id), getGenres(movie.id)"/>
-        <h2>Series</h2>
+        <h2 class="text-danger fs-1">Series</h2>
         <MainComponent v-for="serie in store.seriesList" :img="serie.poster_path" :title="serie.name"
           :originalTitle="serie.original_name" :language="serie.original_language" :vote="serie.vote_average"
           :plot="serie.overview" :id="serie.id" :backdrop="store.imgLink+serie.backdrop_path"/>
@@ -76,4 +76,9 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app{
+  background-image: url('./assets/images/film-icons-seamless-pattern-14b273.jpg');
+  background-size: contain;
+}
+</style>
