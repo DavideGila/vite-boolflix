@@ -4,7 +4,8 @@ export const store = reactive({
     endPoint: {
         movie: 'search/movie',
         series: 'search/tv',
-        actorsMovie: 'movie/'
+        actorsMovie: 'movie/',
+        actorsSeries: 'tv/'
     },
     params: {
         api_key: 'a9f12e55fa53586e59311102e6a5b433',
@@ -17,7 +18,7 @@ export const store = reactive({
     loading: true,
     movieList:[],
     seriesList:[],
-    actorsMovieList:[],
+    actorsList:[],
     genreList:[],
     flagsList:
         {
