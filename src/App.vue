@@ -9,11 +9,12 @@
         <MainComponent v-for="movie in store.movieList" :img="movie.poster_path" :title="movie.title"
           :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"
           :plot="movie.overview" :id="movie.id" :backdrop="store.imgLink+movie.backdrop_path"
-          @click="getActors(movie.id), getGenres(movie.id)"/>
+          @click="getMovieActors(movie.id), getMovieGenres(movie.id)"/>
         <h2 class="text-danger fs-1">Series</h2>
         <MainComponent v-for="serie in store.seriesList" :img="serie.poster_path" :title="serie.name"
           :originalTitle="serie.original_name" :language="serie.original_language" :vote="serie.vote_average"
-          :plot="serie.overview" :id="serie.id" :backdrop="store.imgLink+serie.backdrop_path"/>
+          :plot="serie.overview" :id="serie.id" :backdrop="store.imgLink+serie.backdrop_path"
+          @click="getSeriesActors(serie.id), getSeriesGenres(serie.id)"/>
       </div>
     </div>
 
@@ -48,20 +49,42 @@ export default {
         store.seriesList = response.data.results;
       })
     },
-    getActors(actorId) {
-      store.actorsMovieList = [];
+    getMovieActors(actorId) {
+      store.actorsList = [];
       const movieActUrl = store.endPoint.actorsMovie + actorId + '/credits';
       axios.get(store.apiUrl + movieActUrl, { params: store.paramsActor }).then((response) => {
         for (let i = 0; i < 5; i++) {
           if (response.data.cast[i]) {
-            store.actorsMovieList.push(response.data.cast[i].name)
+            store.actorsList.push(response.data.cast[i].name)
           }
         }
       })
     },
-    getGenres(genreId){
+    getSeriesActors(actorId) {
+      store.actorsList = [];
+      const seriesActUrl = store.endPoint.actorsSeries + actorId + '/credits';
+      axios.get(store.apiUrl + seriesActUrl, { params: store.paramsActor }).then((response) => {
+        for (let i = 0; i < 5; i++) {
+          if (response.data.cast[i]) {
+            store.actorsList.push(response.data.cast[i].name)
+            console.log(store.actorsList);
+          }
+        }
+      })
+    },
+    getMovieGenres(genreId){
       store.genreList = []
       const genreUrl = store.endPoint.actorsMovie + genreId;
+      axios.get(store.apiUrl + genreUrl, { params: store.paramsActor }).then((response) =>{
+        response.data.genres.forEach(genre => {
+          store.genreList.push(genre.name)
+          return store.genreList
+        });
+      })
+    },
+    getSeriesGenres(genreId){
+      store.genreList = []
+      const genreUrl = store.endPoint.actorsSeries + genreId;
       axios.get(store.apiUrl + genreUrl, { params: store.paramsActor }).then((response) =>{
         response.data.genres.forEach(genre => {
           store.genreList.push(genre.name)
