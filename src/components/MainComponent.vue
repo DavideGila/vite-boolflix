@@ -24,7 +24,7 @@
                 <h4 class="title">{{ originalTitle }} </h4>
                 <p><i class="fa-solid fa-star text-warning" v-for="n in Math.round(vote / 2)"></i></p>
                 <span>Main Cast:</span>
-                <span v-for="actor in store.actorsMovieList" class="px-2">{{ actor }}</span> <br>
+                <span v-for="actor in store.actorsList" class="px-2">{{ actor }}</span> <br>
                 <span>Genre:</span>
                 <span v-for="genre in store.genreList" class="px-2">{{ genre }}</span>
                 <div class="pt-3">Plot:</div>
